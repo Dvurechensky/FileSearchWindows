@@ -53,3 +53,5 @@
 -
 📏 .NET 6.0
 -
+
+<p align="center">✨Dvurechensky✨</p>
