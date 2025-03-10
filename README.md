@@ -1,6 +1,6 @@
 <p align="center">
   <p align="center">
-    <a href="https://sites.google.com/view/dvurechensky" target="_blank"><img alt="Static Badge" src="https://img.shields.io/badge/Dvurechensky-АРМО_СИСТЕМЫ-blue"></a>
+    <a href="https://sites.google.com/view/dvurechensky" target="_blank"><img alt="Static Badge" src="https://shields.dvurechensky.pro/badge/Dvurechensky-АРМО_СИСТЕМЫ-blue"></a>
   </p>
 </p>
 
