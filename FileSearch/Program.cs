@@ -1,14 +1,22 @@
+п»ї/*
+ * Author: Nikolay Dvurechensky
+ * Site: https://www.dvurechensky.pro/
+ * Gmail: dvurechenskysoft@gmail.com
+ * Last Updated: 12 РјР°СЏ 2025 06:51:53
+ * Version: 1.0.7
+ */
+
 namespace FileSearch
 {
     internal static class Program
     {
         /// <summary>
-        /// Основная точка входа в приложение.
+        /// РћСЃРЅРѕРІРЅР°СЏ С‚РѕС‡РєР° РІС…РѕРґР° РІ РїСЂРёР»РѕР¶РµРЅРёРµ.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            // Чтобы настроить конфигурацию приложения, например установить настройки высокого разрешения или шрифт по умолчанию,
+            // Р§С‚РѕР±С‹ РЅР°СЃС‚СЂРѕРёС‚СЊ РєРѕРЅС„РёРіСѓСЂР°С†РёСЋ РїСЂРёР»РѕР¶РµРЅРёСЏ, РЅР°РїСЂРёРјРµСЂ СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё РІС‹СЃРѕРєРѕРіРѕ СЂР°Р·СЂРµС€РµРЅРёСЏ РёР»Рё С€СЂРёС„С‚ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ,
             // https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new MainForm());

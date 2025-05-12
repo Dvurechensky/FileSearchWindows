@@ -1,3 +1,11 @@
+п»ї/*
+ * Author: Nikolay Dvurechensky
+ * Site: https://www.dvurechensky.pro/
+ * Gmail: dvurechenskysoft@gmail.com
+ * Last Updated: 12 РјР°СЏ 2025 06:51:53
+ * Version: 1.0.7
+ */
+
 using FileSearch.Logic;
 using FileSearch.Logic.Model.Engine;
 using FileSearch.Logic.Model.Tree;
@@ -28,7 +36,7 @@ namespace FileSearch
         #region Logic
 
         /// <summary>
-        /// Подготовка к запуску сеанса поиска
+        /// РџРѕРґРіРѕС‚РѕРІРєР° Рє Р·Р°РїСѓСЃРєСѓ СЃРµР°РЅСЃР° РїРѕРёСЃРєР°
         /// </summary>
         private DirectoryInfo SearchInit()
         {
@@ -41,14 +49,14 @@ namespace FileSearch
 
             SaveInfo(comboBox: true);
 
-            SearchBtn.Text = @"Остановить";
-            statusLabel.Text = @"Поиск... Пожалуйста подождите.";
+            SearchBtn.Text = @"РћСЃС‚Р°РЅРѕРІРёС‚СЊ";
+            statusLabel.Text = @"РџРѕРёСЃРє... РџРѕР¶Р°Р»СѓР№СЃС‚Р° РїРѕРґРѕР¶РґРёС‚Рµ.";
             statusLabelExceptions.Text = null;
             return new DirectoryInfo(DirPathTxt.Text.Trim('\\') + "\\");
         }
 
         /// <summary>
-        /// Обработка события обнаружения данных
+        /// РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РѕР±РЅР°СЂСѓР¶РµРЅРёСЏ РґР°РЅРЅС‹С…
         /// </summary>
         /// <param name="searchResults">searchResults</param>
         private void LoadList(IEnumerable<SearchResult> searchResults)
@@ -66,13 +74,13 @@ namespace FileSearch
             }
 
             lstResults.AddSearchResults(searchResults);
-            AddTimerTextInfo(_fileSearcher.CurrentTime.GetFriendlyNotation());  // обновляем таймер
-            AddFindFilesCount(lstResults.Count);                                // Обновляем число обнаруженных файлов
-            AddThreeViewData(searchResults);                                    // Обновляем дерево директорий
+            AddTimerTextInfo(_fileSearcher.CurrentTime.GetFriendlyNotation());  // РѕР±РЅРѕРІР»СЏРµРј С‚Р°Р№РјРµСЂ
+            AddFindFilesCount(lstResults.Count);                                // РћР±РЅРѕРІР»СЏРµРј С‡РёСЃР»Рѕ РѕР±РЅР°СЂСѓР¶РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ
+            AddThreeViewData(searchResults);                                    // РћР±РЅРѕРІР»СЏРµРј РґРµСЂРµРІРѕ РґРёСЂРµРєС‚РѕСЂРёР№
         }
 
         /// <summary>
-        /// Обработка окончания сеанса поиска
+        /// РћР±СЂР°Р±РѕС‚РєР° РѕРєРѕРЅС‡Р°РЅРёСЏ СЃРµР°РЅСЃР° РїРѕРёСЃРєР°
         /// </summary>
         private void LoadListFinished()
         {
@@ -84,23 +92,23 @@ namespace FileSearch
 
             var exceptions = _fileSearcher.Exceptions;
             if (exceptions.Count > 0)
-                statusLabelExceptions.Text = string.Format(CultureInfo.InvariantCulture, "{0} ошибок в поиске", exceptions.Count);
+                statusLabelExceptions.Text = string.Format(CultureInfo.InvariantCulture, "{0} РѕС€РёР±РѕРє РІ РїРѕРёСЃРєРµ", exceptions.Count);
 
-            SearchBtn.Text = @"Поиск";
-            PauseBtn.Text = @"Пауза";
+            SearchBtn.Text = @"РџРѕРёСЃРє";
+            PauseBtn.Text = @"РџР°СѓР·Р°";
             SearchBtn.Enabled = true;
 
-            statusLabel.Text = @"Завершено за " + _fileSearcher.OperatingTime.GetFriendlyNotation() + @". Найдено: " + lstResults.Count;
+            statusLabel.Text = @"Р—Р°РІРµСЂС€РµРЅРѕ Р·Р° " + _fileSearcher.OperatingTime.GetFriendlyNotation() + @". РќР°Р№РґРµРЅРѕ: " + lstResults.Count;
             toolStripProgressBar1.Style = ProgressBarStyle.Blocks;
             if (DirsTreeView.Nodes.Count > 0)
                 DirsTreeView.Focus();
         }
 
         /// <summary>
-        /// Конфигурирование критерий поиска
+        /// РљРѕРЅС„РёРіСѓСЂРёСЂРѕРІР°РЅРёРµ РєСЂРёС‚РµСЂРёР№ РїРѕРёСЃРєР°
         /// 
-        /// TODO: В будущем можно сделать тонкую настройку 
-        /// критерий поиска в UI указав Control для включения тех или иных
+        /// TODO: Р’ Р±СѓРґСѓС‰РµРј РјРѕР¶РЅРѕ СЃРґРµР»Р°С‚СЊ С‚РѕРЅРєСѓСЋ РЅР°СЃС‚СЂРѕР№РєСѓ 
+        /// РєСЂРёС‚РµСЂРёР№ РїРѕРёСЃРєР° РІ UI СѓРєР°Р·Р°РІ Control РґР»СЏ РІРєР»СЋС‡РµРЅРёСЏ С‚РµС… РёР»Рё РёРЅС‹С…
         /// </summary>
         /// <param name="directoryInfo">directoryInfo</param>
         /// <param name="text">text</param>
@@ -128,7 +136,7 @@ namespace FileSearch
         }
 
         /// <summary>
-        /// Построение дерева директорий
+        /// РџРѕСЃС‚СЂРѕРµРЅРёРµ РґРµСЂРµРІР° РґРёСЂРµРєС‚РѕСЂРёР№
         /// </summary>
         /// <param name="searchResults">IEnumerable</param>
         private void AddThreeViewData(IEnumerable<SearchResult> searchResults)
@@ -137,7 +145,7 @@ namespace FileSearch
         }
 
         /// <summary>
-        /// Инициализация чтения максимального числа файлов в директории
+        /// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С‡С‚РµРЅРёСЏ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ С‡РёСЃР»Р° С„Р°Р№Р»РѕРІ РІ РґРёСЂРµРєС‚РѕСЂРёРё
         /// </summary>
         private void LoadingMaxFiles()
         {
@@ -153,7 +161,7 @@ namespace FileSearch
         }
 
         /// <summary>
-        /// Формирование async задачи на чтение максимального числа файлов в директории
+        /// Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ async Р·Р°РґР°С‡Рё РЅР° С‡С‚РµРЅРёРµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ С‡РёСЃР»Р° С„Р°Р№Р»РѕРІ РІ РґРёСЂРµРєС‚РѕСЂРёРё
         /// </summary>
         /// <param name="searchPath">path</param>
         public async Task GetAllFilesExecute(string searchPath)
@@ -166,7 +174,7 @@ namespace FileSearch
         }
 
         /// <summary>
-        /// Получение максимального числа файлов в директории (с вложенными внутри)
+        /// РџРѕР»СѓС‡РµРЅРёРµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ С‡РёСЃР»Р° С„Р°Р№Р»РѕРІ РІ РґРёСЂРµРєС‚РѕСЂРёРё (СЃ РІР»РѕР¶РµРЅРЅС‹РјРё РІРЅСѓС‚СЂРё)
         /// </summary>
         /// <param name="searchPath">path</param>
         private void GetAllFiles(string searchPath)
@@ -183,7 +191,7 @@ namespace FileSearch
                 }
                 catch (OperationCanceledException)
                 {
-                    // Обработка отмены операции
+                    // РћР±СЂР°Р±РѕС‚РєР° РѕС‚РјРµРЅС‹ РѕРїРµСЂР°С†РёРё
                     AddMaxFilesTxtInfo(count.ToString());
                     AddProgressBarLoadMax(false);
                 }
@@ -227,28 +235,28 @@ namespace FileSearch
             }
             catch (OperationCanceledException)
             {
-                throw; // Пробрасываем исключение дальше для обработки в вызывающем коде
+                throw; // РџСЂРѕР±СЂР°СЃС‹РІР°РµРј РёСЃРєР»СЋС‡РµРЅРёРµ РґР°Р»СЊС€Рµ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РІ РІС‹Р·С‹РІР°СЋС‰РµРј РєРѕРґРµ
             }
             catch (UnauthorizedAccessException)
             {
-                return 0; // Пропускаем каталоги, к которым нет доступа
+                return 0; // РџСЂРѕРїСѓСЃРєР°РµРј РєР°С‚Р°Р»РѕРіРё, Рє РєРѕС‚РѕСЂС‹Рј РЅРµС‚ РґРѕСЃС‚СѓРїР°
             }
             catch (DirectoryNotFoundException)
             {
-                return 0; // Пропускаем отсутствующие каталоги
+                return 0; // РџСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‰РёРµ РєР°С‚Р°Р»РѕРіРё
             }
         }
 
         /// <summary>
-        /// Сохранение полей (простейшее)
+        /// РЎРѕС…СЂР°РЅРµРЅРёРµ РїРѕР»РµР№ (РїСЂРѕСЃС‚РµР№С€РµРµ)
         /// </summary>
-        /// <param name="comboBox">сохранение выбранного пути в comboBox в текущей сессии</param>
+        /// <param name="comboBox">СЃРѕС…СЂР°РЅРµРЅРёРµ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РїСѓС‚Рё РІ comboBox РІ С‚РµРєСѓС‰РµР№ СЃРµСЃСЃРёРё</param>
         private void SaveInfo(bool comboBox = false)
         {
             File.WriteAllText(@"DirInfo.dat", DirPathTxt.Text);
             File.WriteAllText(@"FileRegex.dat", FileRegexPathTxt.Text);
 
-            //сохранение выбранного пути для поиска в текущей сессии
+            //СЃРѕС…СЂР°РЅРµРЅРёРµ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РїСѓС‚Рё РґР»СЏ РїРѕРёСЃРєР° РІ С‚РµРєСѓС‰РµР№ СЃРµСЃСЃРёРё
             if (comboBox)
             {
                 var content = DirPathTxt.SelectedItem != null ? (string)DirPathTxt.SelectedItem : DirPathTxt.Text;
@@ -308,7 +316,7 @@ namespace FileSearch
             var dirInfo = SearchInit();
             if (!dirInfo.Exists)
             {
-                MessageBox.Show(@"Путь не существует.", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(@"РџСѓС‚СЊ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚.", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -321,8 +329,8 @@ namespace FileSearch
         {
             _fileSearcher?.Pause((state) =>
             {
-                PauseBtn.Text = (state) ? "Далее" : "Пауза";
-            }, (PauseBtn.Text == "Далее") ? false : true);
+                PauseBtn.Text = (state) ? "Р”Р°Р»РµРµ" : "РџР°СѓР·Р°";
+            }, (PauseBtn.Text == "Р”Р°Р»РµРµ") ? false : true);
         }
 
         private void DirPathTxt_TextChanged(object sender, EventArgs e)
@@ -354,7 +362,7 @@ namespace FileSearch
         {
             if (_fileSearcher != null && _fileSearcher.IsRunning)
             {
-                MessageBox.Show("Поиск ещё идёт!");
+                MessageBox.Show("РџРѕРёСЃРє РµС‰С‘ РёРґС‘С‚!");
                 return;
             }
 
@@ -382,7 +390,7 @@ namespace FileSearch
         #region Async UI
 
         /// <summary>
-        /// Обновление AllFilesTxt
+        /// РћР±РЅРѕРІР»РµРЅРёРµ AllFilesTxt
         /// </summary>
         /// <param name="text">count</param>
         private void AddMaxFilesTxtInfo(string text)
@@ -398,7 +406,7 @@ namespace FileSearch
         }
 
         /// <summary>
-        /// Обновление pictureBoxLoading
+        /// РћР±РЅРѕРІР»РµРЅРёРµ pictureBoxLoading
         /// </summary>
         /// <param name="visible">bool</param>
         private void AddProgressBarLoadMax(bool visible)
@@ -414,7 +422,7 @@ namespace FileSearch
         }
 
         /// <summary>
-        /// Обновление timerTxt
+        /// РћР±РЅРѕРІР»РµРЅРёРµ timerTxt
         /// </summary>
         /// <param name="text">count</param>
         private void AddTimerTextInfo(string text)
@@ -430,7 +438,7 @@ namespace FileSearch
         }
 
         /// <summary>
-        /// Обновление FindFilesTxt
+        /// РћР±РЅРѕРІР»РµРЅРёРµ FindFilesTxt
         /// </summary>
         /// <param name="count">count</param>
         private void AddFindFilesCount(int count)
